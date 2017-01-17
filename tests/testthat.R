@@ -4,4 +4,5 @@ Sys.setenv(R_TESTS = '')
 library(testthat)
 library(IRkernel)
 
-test_check('IRkernel')
+if (.Platform$OS.type != "windows")
+  test_check('IRkernel')
