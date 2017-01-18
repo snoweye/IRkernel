@@ -210,13 +210,13 @@ class IRkernelTests(jkt.KernelTests):
         reply, output_msgs = self.execute_helper('warning(simpleWarning("wmsg"))')
         self.assertEqual(output_msgs[0]['msg_type'], 'stream')
         self.assertEqual(output_msgs[0]['content']['name'], 'stderr')
-        self.assertEqual(output_msgs[0]['content']['text'], 'Warning message:\n“wmsg”')
+        self.assertEqual(output_msgs[0]['content']['text'], 'Warning message:\n"wmsg"')
         
         self.flush_channels()
         reply, output_msgs = self.execute_helper('f <- function() warning("wmsg"); f()')
         self.assertEqual(output_msgs[0]['msg_type'], 'stream')
         self.assertEqual(output_msgs[0]['content']['name'], 'stderr')
-        self.assertEqual(output_msgs[0]['content']['text'], 'Warning message in f():\n“wmsg”')
+        self.assertEqual(output_msgs[0]['content']['text'], 'Warning message in f():\n"wmsg"')
 
     def test_should_increment_history(self):
         """properly increments execution history"""
