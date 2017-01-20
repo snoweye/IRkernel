@@ -33,7 +33,7 @@ test_that('kernel tests pass', {
     if (.Platform$OS.type != "windows")
       con <- pipe('python3 -W ignore::DeprecationWarning -m ndjson_testrunner test_ir', 'rt')
     else
-      con <- pipe('python -W ignore::DeprecationWarning -m ndjson_testrunner test_ir', 'rt')
+      con <- pipe('py -3 -W ignore::DeprecationWarning -m ndjson_testrunner test_ir', 'rt')
     on.exit(expect_equal(close(con), 0L))
     
     jsonlite::stream_in(con, result_to_test, pagesize = 1L, verbose = FALSE)
